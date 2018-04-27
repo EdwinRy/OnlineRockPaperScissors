@@ -1,7 +1,23 @@
 <html>
-    My name jeffé <br>
-    <form method="POST">
-        Input:<input type="text" name="text">
-        <input type="submit" value="subscribe">
-    </form>
+    <header>
+        <title>Online RPS</title>
+    </header>
+    <body>
+        My name jeffé <br>
+        <form method="POST">
+            Input:<input type="text" name="text">
+            <input type="submit" value="subscribe">
+        </form>
+
+        <p>Do you want to play agains a Computer instead?</p>
+        <br>
+        <input type="button" onclick="playComputer();" value="yes im sad">
+    </body>
+    
+    <script>
+        function playComputer()
+        {
+            window.location.href = "playComputer.html";
+        }
+    </script>
 </html>

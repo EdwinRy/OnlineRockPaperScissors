@@ -1,8 +1,5 @@
 module.exports = {
-
     startServer : start
-
-
 }
 
 var http = require('http');
