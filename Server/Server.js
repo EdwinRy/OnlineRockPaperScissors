@@ -1,5 +1,7 @@
 module.exports = {
-    startServer : start
+    startServer : start,
+    postHandle: function(response, data){response.end("request not handled")},
+    sendFile: sendFile
 }
 
 var http = require('http');
@@ -14,7 +16,7 @@ function start(port)
 function connectClient(request, response)
 {
     request.on('error', (err) => console.error(err.stack));
-    console.log(request.method);
+    //console.log(request.method);
     if(request.method === 'POST')
     {
         var body = [];
@@ -22,14 +24,14 @@ function connectClient(request, response)
         request.on('end', 
             () => {
                 body = Buffer.concat(body).toString();
-                handlePost(response, body);
+                module.exports.postHandle(response, body);
             }
         )
     }
 
     else
     {
-        console.log(request.url);
+        //console.log(request.url);
         if(request.url === '/')
         {
             sendFile('/main.html', response);
@@ -39,12 +41,6 @@ function connectClient(request, response)
             sendFile(request.url, response);
         }
     }
-}
-
-function handlePost(response, data)
-{
-    console.log(data);
-    sendFile("/main.html",response);
 }
 
 function sendFile(url, response)
