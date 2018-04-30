@@ -5,7 +5,7 @@ function guess(choice)
     switch(choice)
     {
         case 0:
-            //Draw
+            //Draw 
             if(computerChoice == 0)
             {
                 alert("Draw!");
