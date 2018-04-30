@@ -58,7 +58,5 @@ function guess(choice)
             }
         break;
     }
-
-
     window.location.href = "/";
 }

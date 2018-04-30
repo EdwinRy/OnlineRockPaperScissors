@@ -7,7 +7,7 @@ button{
     border:none;
     border-radius: 3px;
     font-size: 150%;
-    transition-duration: 0.5s;
+    transition: color 0.5s;
 }
 
 button:hover{

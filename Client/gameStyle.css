@@ -14,7 +14,7 @@ button
     font-size: 50px;
     border-radius: 3px;
     width:270px;
-    transition-duration: .5s;
+    transition: color .5s;
     display: block;
     border:none;
 }
