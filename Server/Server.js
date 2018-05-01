@@ -19,11 +19,19 @@ function connectClient(request, response)
     //console.log(request.method);
     if(request.method === 'POST')
     {
-        var body = [];
-        request.on('data', (chunk) => body.push(chunk));
+        var body = "";
+        request.on('data', (chunk) => {
+            body += chunk;
+            if(body.length > 1e7)
+            {
+                response.writeHead(413,"Entity too large", 
+                    {'Content-Type': 'text/html'}
+                );
+                response.end("413");
+            };
+        });
         request.on('end', 
             () => {
-                body = Buffer.concat(body).toString();
                 module.exports.postHandle(response, body);
             }
         )
@@ -31,7 +39,7 @@ function connectClient(request, response)
 
     else
     {
-        //console.log(request.url);
+        console.log(request.url);
         if(request.url === '/')
         {
             sendFile('/main.html', response);

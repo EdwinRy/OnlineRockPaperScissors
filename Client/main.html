@@ -4,15 +4,9 @@
         <link rel="stylesheet" type="text/css" href="mainStyle.css">
     </header>
     <body>
-        <!--
-        My name jeffé <br>
-        <form method="POST">
-            Input:<input type="text" name="text">
-            <input type="submit" value="subscribe">
-        </form>-->
         <h2>Do you want to play against a computer instead?</h2>
         <button onclick="playComputer();">Play against computer</button>
-        <button id="refresh" onclick="">Refresh games</button>
+        <button id="refresh" onclick="refresh();">Refresh games</button>
 
         <br><br>
 
@@ -24,13 +18,28 @@
         </table>
         <br>
         <button style="width:100%">Host new game</button>
-
     </body>
     
     <script>
         function playComputer()
         {
             window.location.href = "playComputer.html";
+        }
+        
+        function refresh()
+        {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function()
+            {
+                if(this.readyState == 4 && this.status==200)
+                {
+                    //console.log(this.response);
+                    document.getElementById("games").innerHTML = this.response;
+                }
+            }
+            xhttp.open("POST","/",true);
+            xhttp.setRequestHeader("Content-Type","text/plain");
+            xhttp.send("request=refresh");
         }
     </script>
 </html>
