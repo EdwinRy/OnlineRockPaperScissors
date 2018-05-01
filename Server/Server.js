@@ -39,7 +39,7 @@ function connectClient(request, response)
 
     else
     {
-        console.log(request.url);
+        //console.log(request.url);
         if(request.url === '/')
         {
             sendFile('/main.html', response);
@@ -65,10 +65,28 @@ function sendFile(url, response)
             }
             else
             {
-                response.writeHead(200,
-                    {'Content-Type':'text/html;charset=UTF-8',
-                    'Content-Length':data.length}
-                );
+                if(url.endsWith('.css'))
+                {
+                    response.writeHead(200,
+                        {'Content-Type':'text/css;charset=UTF-8',
+                        'Content-Length':data.length}
+                    );
+                }
+                else if(url.endsWith('.html'))
+                {
+                    response.writeHead(200,
+                        {'Content-Type':'text/html;charset=UTF-8',
+                        'Content-Length':data.length}
+                    );
+                }
+                else
+                {
+                    response.writeHead(200,
+                        {'Content-Type':'text/plain;charset=UTF-8',
+                        'Content-Length':data.length}
+                    );
+                }
+                
                 response.write(data);
             }
             response.end();

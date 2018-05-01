@@ -13,6 +13,7 @@ table, th, td{
 
 button#refresh{
     background-color: rgb(255, 166, 0);
+    color:#000000;
     float : right;
     border:none;
     border-radius: 3px;
@@ -27,6 +28,7 @@ button#refresh:hover{
 
 button{
     background-color: rgb(192,192,192);
+    color: #000000;
     border:none;
     border-radius: 3px;
     font-size: 150%;
