@@ -10,6 +10,6 @@ function handlePost(response, data)
         {'Content-Type':'text/plain;charset=UTF-8',
         'Content-Length':data.length}
     );
-    response.write("<xml><xml>");
+    response.write("<xml><tr><th style='width:80%'>host</th><th>Join</th></tr><xml>");
     response.end();
 }

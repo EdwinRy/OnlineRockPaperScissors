@@ -2,6 +2,7 @@
     <header>
         <title>Online RPS</title>
         <link rel="stylesheet" type="text/css" href="mainStyle.css">
+        <script src="main.js"></script>
     </header>
     <body>
         <h2>Do you want to play against a computer instead?</h2>
@@ -19,27 +20,4 @@
         <br>
         <button style="width:100%">Host new game</button>
     </body>
-    
-    <script>
-        function playComputer()
-        {
-            window.location.href = "playComputer.html";
-        }
-        
-        function refresh()
-        {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function()
-            {
-                if(this.readyState == 4 && this.status==200)
-                {
-                    //console.log(this.response);
-                    document.getElementById("games").innerHTML = this.response;
-                }
-            }
-            xhttp.open("POST","/",true);
-            xhttp.setRequestHeader("Content-Type","text/plain");
-            xhttp.send("request=refresh");
-        }
-    </script>
 </html>
